@@ -1,0 +1,9 @@
+gitignore
+node_modules/
+dist/
+*~
+*.swp
+*.swo
+npm-debug.log*
+tags
+.ctags
