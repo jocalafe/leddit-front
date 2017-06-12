@@ -1,16 +1,16 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import TextField from '../../src/js/components/TextField';
+import Card from './Card';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 jest.mock('react-dom');
 
-describe('TextField', () => {
+describe('Card', () => {
   it('renders', () => {
     const tree = renderer.create(
       <MuiThemeProvider>
-        <TextField id='test1' />
+        <Card />
       </MuiThemeProvider>
     ).toJSON();
     expect(tree).toMatchSnapshot();
