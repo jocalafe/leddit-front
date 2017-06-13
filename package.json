@@ -58,5 +58,9 @@
     "redux": "^3.6.0",
     "redux-form": "^6.7.0",
     "redux-thunk": "^2.2.0"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom" : ["./src/*.{js,jsx}"]
   }
 }
