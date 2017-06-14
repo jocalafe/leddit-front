@@ -31,6 +31,7 @@
     "babel-preset-react-hmre": "^1.1.1",
     "copy-webpack-plugin": "^4.0.1",
     "cross-env": "^3.1.4",
+    "enzyme": "^2.8.2",
     "eslint": "^3.9.1",
     "eslint-config-airbnb": "^13.0.0",
     "eslint-parallel": "^0.1.0",
@@ -60,7 +61,12 @@
     "redux-thunk": "^2.2.0"
   },
   "jest": {
-    "collectCoverage": true,
-    "collectCoverageFrom" : ["./src/*.{js,jsx}"]
+    "collectCoverageFrom": [
+      "**/*.{js,jsx}",
+      "!**/node_modules/**",
+      "!**/dist/**",
+      "!**/coverage/**",
+      "!webpack.config.babel.js"
+    ]
   }
 }

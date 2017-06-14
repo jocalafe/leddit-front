@@ -1,25 +1,48 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { shallow, mount } from 'enzyme';
 import { createStore } from 'redux';
 import { reducer } from 'redux-form';
 import { Provider } from 'react-redux';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import Login from './Login';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
+injectTapEventPlugin();
 
 const store = createStore(reducer);
 
 jest.mock('react-dom');
 
-describe('TextField', () => {
+describe('Login', () => {
   it('renders', () => {
-    const tree = renderer.create(
+    const wrapper = shallow(
       <MuiThemeProvider>
         <Provider store={store}>
           <Login />
         </Provider>
       </MuiThemeProvider>
-    ).toJSON();
-    expect(tree).toMatchSnapshot();
+    );
+    expect(wrapper).toMatchSnapshot();
+  });
+  it('renders two TextFields', () => {
+    const wrapper = mount(
+      <MuiThemeProvider>
+        <Provider store={store}>
+          <Login />
+        </Provider>
+      </MuiThemeProvider>
+    );
+    expect(wrapper.find('TextField').length).toBe(2);
+  });
+  it('renders one button', () => {
+    const wrapper = mount(
+      <MuiThemeProvider>
+        <Provider store={store}>
+          <Login />
+        </Provider>
+      </MuiThemeProvider>
+    );
+    expect(wrapper.find('button').length).toBe(1);
   });
 });

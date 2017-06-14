@@ -1,5 +1,5 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { shallow } from 'enzyme';
 
 import TextField from './TextField';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -8,11 +8,11 @@ jest.mock('react-dom');
 
 describe('TextField', () => {
   it('renders', () => {
-    const tree = renderer.create(
+    const wrapper = shallow(
       <MuiThemeProvider>
         <TextField id='test1' />
       </MuiThemeProvider>
-    ).toJSON();
-    expect(tree).toMatchSnapshot();
+    );
+    expect(wrapper).toMatchSnapshot();
   });
 });

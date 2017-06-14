@@ -8,10 +8,10 @@ let Login = ({ handleSubmit, authValues, status, ...rest}) => (
   <form onSubmit={event => handleSubmit(event, authValues)}>
     <p>{status}</p>
     <div>
-      <Field name='userName' component={TextField} hint='User Name'/>
+      <Field name='username' component={TextField} id='username1' hint='User Name'/>
     </div>
     <div>
-      <Field name='password' component={TextField} hint='Password' type='password'/>
+      <Field name='password' component={TextField} id='password1' hint='Password' type='password'/>
     </div>
     <div>
       <Button type='submit' primary={true}> Submit </Button>

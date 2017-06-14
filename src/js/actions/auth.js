@@ -4,8 +4,8 @@ import { fetchUserLogin } from '../api/auth';
 export function loginUser(userName, password) {
   return (dispatch) => {
     dispatch(loginUserRequest(userName, password));
-    return fetchUserLogin(userName, password).then((userData) => {
-      dispatch(loginUserSuccess(userData));
+    return fetchUserLogin(userName, password).then((user) => {
+      dispatch(loginUserSuccess(user));
     }).catch(() => {
       dispatch(loginUserFailure());
     });
@@ -18,10 +18,10 @@ export function loginUserRequest() {
   };
 }
 
-export function loginUserSuccess(userData) {
+export function loginUserSuccess(user) {
   return {
     type: LOGIN_USER_SUCCESS,
-    payload: { ...userData }
+    payload: { user }
   };
 }
 

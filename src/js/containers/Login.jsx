@@ -6,12 +6,11 @@ import { loginUser } from '../actions/auth';
 
 import Login from '../components/Login'
 
-
 function mapStateToProps(state) {
   const selector = formValueSelector('LoginForm');
   return {
     authValues: {
-      userName: selector(state, 'userName'),
+      userName: selector(state, 'username'),
       password: selector(state, 'password')
     },
     isAuthenticated: state.auth.isAuthenticated,

@@ -2,7 +2,7 @@ import { LOGIN_USER_REQUEST, LOGIN_USER_SUCCESS, LOGIN_USER_FAILURE } from '../c
 
 const initialState = {
   isAuthenticating: false,
-  isAuthenticated: false,
+  user: null,
   status: ''
 };
 
@@ -17,7 +17,7 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         isAuthenticating: false,
-        isAuthenticated: true,
+        user: Object.assign(Object.create(action.payload.user), action.payload.user),
         status: 'Login successfull'
       };
     case LOGIN_USER_FAILURE:
