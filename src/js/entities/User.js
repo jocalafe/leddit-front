@@ -1,13 +1,14 @@
-export default function User(username) {
-  this.username = username;
-  this.subscribedSubreddits = [];
-
-  this.subscribeToSubreddit = function(subredditId) {
-    this.subscribedSubreddits = [...this.subscribedSubreddits, subredditId];
+export default function user(username) {
+  let self = {
+    username,
+    subscribedSubreddits: [],
+    subscribeToSubreddit(subredditId) {
+      self.subscribedSubreddits = [...self.subscribedSubreddits, subredditId];
+    },
+    unSubscribeFromSubreddit(subredditId) {
+      self.subscribedSubreddits = self.subscribedSubreddits.filter(id => id !== subredditId);
+    }
   }
-
-  this.unSubscribeFromSubreddit = function(subredditId) {
-    this.subscribedSubreddits = this.subscribedSubreddits.filter(id => id !== subredditId);
-  }
+  return self;
 
 }

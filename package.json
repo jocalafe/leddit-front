@@ -7,7 +7,8 @@
     "test": "jest",
     "lint": "eslint ./",
     "dev": "webpack-dev-server",
-    "build": "webpack -p"
+    "build": "webpack -p",
+    "tags": "ctags -R --exclude=node_modules --exclude=__snapshots__ --exclude=coverage --exclude=dist"
   },
   "repository": {
     "type": "git",

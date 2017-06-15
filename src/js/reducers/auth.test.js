@@ -1,18 +1,20 @@
 import { LOGIN_USER_REQUEST, LOGIN_USER_SUCCESS, LOGIN_USER_FAILURE } from '../constants/actionTypes';
 import authReducer from './auth';
 
+import user from '../entities/user';
+
 describe('auth reducer', () => {
   it('can authenticate a user', () => {
     expect(authReducer({}, {
       type: LOGIN_USER_SUCCESS,
       payload: {
-        isAuthenticated: true
+        user: user('test')
       }
-    })).toEqual({
+    })).toEqual(expect.objectContaining({
       isAuthenticating: false,
-      isAuthenticated: true,
-      status: 'Login successfull'
-    });
+      status: 'Login successfull',
+      user: expect.any(Object)
+    }));
   });
 
   it('can save an authentication error', () => {
