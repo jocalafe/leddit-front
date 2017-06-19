@@ -1,12 +1,9 @@
 import subreddit from './subreddit';
 
 describe('Subreddit factory function', () => {
-  it('should create a Subreddit object with a given name', () => {
-    const name = 'testSub';
-    const subreddit1 = subreddit(name);
-    expect(subreddit1.getName()).toEqual(name);
+  it('should return an object', () => {
+    expect(subreddit('test')).toEqual(expect.any(Object));
   });
-
   it('should throw unnamed subreddit error when name is not supplied', () => {
     expect(() => {
       subreddit()
@@ -19,3 +16,12 @@ describe('Subreddit factory function', () => {
     }).toThrow('subreddit name should not be empty');
   });
 });
+
+describe('subreddit object', () => {
+  it('can get its name', () => {
+    const name = 'testSub';
+    const subreddit1 = subreddit(name);
+    expect(subreddit1.name).toEqual(name);
+  });
+});
+

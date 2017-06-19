@@ -1,11 +1,11 @@
-const user = (name) => {
+export default function user(name) {
   const userName = name;
   let subscribedSubreddits = [];
-  const self = {
-    getUserName() {
+  return {
+    get name() {
       return userName;
     },
-    getSubscribedSubreddits() {
+    get subscribedSubreddits() {
       return subscribedSubreddits;
     },
     subscribeToSubreddit(subredditId) {
@@ -15,8 +15,5 @@ const user = (name) => {
       subscribedSubreddits = subscribedSubreddits.filter(id => id !== subredditId);
     }
   }
-  return self;
-
 }
 
-export default user;

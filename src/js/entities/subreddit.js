@@ -7,7 +7,7 @@ export default function subreddit(name) {
     throw new Error('subreddit name should not be empty');
   }
   return {
-    getName() {
+    get name() {
       return subredditName;
     }
   }
