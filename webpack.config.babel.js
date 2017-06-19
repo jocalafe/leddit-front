@@ -34,6 +34,7 @@ export default {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    HtmlWebpackPluginConfig
+    HtmlWebpackPluginConfig,
+    new webpack.NamedModulesPlugin(),
   ]
 };

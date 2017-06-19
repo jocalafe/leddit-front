@@ -1,14 +1,22 @@
-export default function user(username) {
-  let self = {
-    username,
-    subscribedSubreddits: [],
+const user = (name) => {
+  const userName = name;
+  let subscribedSubreddits = [];
+  const self = {
+    getUserName() {
+      return userName;
+    },
+    getSubscribedSubreddits() {
+      return subscribedSubreddits;
+    },
     subscribeToSubreddit(subredditId) {
-      self.subscribedSubreddits = [...self.subscribedSubreddits, subredditId];
+      subscribedSubreddits = [...subscribedSubreddits, subredditId];
     },
     unSubscribeFromSubreddit(subredditId) {
-      self.subscribedSubreddits = self.subscribedSubreddits.filter(id => id !== subredditId);
+      subscribedSubreddits = subscribedSubreddits.filter(id => id !== subredditId);
     }
   }
   return self;
 
 }
+
+export default user;
