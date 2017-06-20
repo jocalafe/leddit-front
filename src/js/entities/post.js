@@ -1,7 +1,8 @@
-export default function post(title, link, description) {
-  const postTitle = title;
-  const postLink = link || '';
-  let postDescription = description || '';
+export default function post(postTitle, postLink, postDescription, postAuthor) {
+  const title = postTitle;
+  const link = postLink || '';
+  let description = postDescription || '';
+  const author = postAuthor;
   return {
     get title() {
       return title;
@@ -11,6 +12,12 @@ export default function post(title, link, description) {
     },
     get description() {
       return description;
+    },
+    get author() {
+      return author;
+    },
+    setDescription(newDescription) {
+      description = newDescription;
     }
   };
 }

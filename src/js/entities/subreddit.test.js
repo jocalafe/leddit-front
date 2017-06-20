@@ -6,13 +6,13 @@ describe('Subreddit factory function', () => {
   });
   it('should throw unnamed subreddit error when name is not supplied', () => {
     expect(() => {
-      subreddit()
-    }).toThrowError('subreddit name is required');
+      subreddit();
+    }).toThrow('subreddit name is required');
   });
 
   it('should throw subreddit name should not be empty error when name is empty', () => {
     expect(() => {
-      subreddit('')
+      subreddit('');
     }).toThrow('subreddit name should not be empty');
   });
 });

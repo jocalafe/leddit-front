@@ -14,6 +14,6 @@ export default function user(name) {
     unSubscribeFromSubreddit(subredditId) {
       subscribedSubreddits = subscribedSubreddits.filter(id => id !== subredditId);
     }
-  }
+  };
 }
 
