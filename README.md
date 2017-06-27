@@ -16,19 +16,19 @@ Install all required dependencies.
 npm install
 ```
 
-##Running the app:
+## Running the app:
 
 ```
 npm run dev
 ```
 
-##Running the test suites:
+## Running the test suites:
 
 ```
 npm run test
 ```
 
-##Building the app:
+## Building the app:
 
 ```
 npm run build
