@@ -17,7 +17,7 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         isAuthenticating: false,
-        user: Object.assign(action.payload.user),
+        user: { ...action.payload.user },
         status: 'Login successfull'
       };
     case LOGIN_USER_FAILURE:

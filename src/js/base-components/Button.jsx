@@ -2,7 +2,7 @@ import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import PropTypes from 'prop-types';
 
-const LedditButton = ({ type, children, backgroundColor, container, disabled, href, icon, label, labelColor, onTouchTap}) => (
+const LedditButton = ({ type, children, backgroundColor, container, disabled, href, icon, label, labelColor, onTouchTap }) => (
   <div>
     <RaisedButton 
       type={type}

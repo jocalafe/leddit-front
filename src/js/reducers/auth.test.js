@@ -4,17 +4,18 @@ import authReducer from './auth';
 import user from '../entities/user';
 
 describe('auth reducer', () => {
+  const user1 = user('test');
   it('can authenticate a user', () => {
     expect(authReducer({}, {
       type: LOGIN_USER_SUCCESS,
       payload: {
-        user: user('test')
+        user: { ...user1 }
       }
-    })).toEqual(expect.objectContaining({
+    })).toEqual({
       isAuthenticating: false,
       status: 'Login successfull',
-      user: expect.any(Object)
-    }));
+      user: { ...user1 }
+    });
   });
 
   it('can save an authentication error', () => {

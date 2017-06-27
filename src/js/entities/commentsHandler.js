@@ -4,6 +4,9 @@ export default function commentsHandler(handlerComments) {
     get comments() {
       return comments;
     },
+    setComments(newComments) {
+      comments = [...newComments];
+    },
     addComment(comment) {
       comments = [...comments, comment];
     },

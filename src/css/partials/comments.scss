@@ -1,0 +1,18 @@
+$comment-border: 1px solid LightGrey;
+
+.comment {
+  border: {
+    top: $comment-border !important;
+  }
+  div {
+    padding: 0px !important;
+    overflow: hidden !important;
+  }
+  .comment-text {
+    margin: {
+      left: 30px !important;
+      top: 15px !important;
+    }
+  }
+}
+

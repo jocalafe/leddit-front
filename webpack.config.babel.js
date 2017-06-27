@@ -29,7 +29,9 @@ export default {
   module: {
     loaders: [
       { test: /\.jsx$/, exclude: /node_modules/, loader: 'babel-loader' },
-      { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' }
+      { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' },
+      { test: /\.scss$/, loader: 'file-loader', options: { name: '[name].css' } },
+      { test: /\.scss$/, loader: 'sass-loader', options: { outputStyle: 'compressed' } }
     ]
   },
   plugins: [

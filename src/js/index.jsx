@@ -5,6 +5,8 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import store from './reducers/index.js'
 
+import '../css/index.scss';
+
 import App from './App';
 
 injectTapEventPlugin();

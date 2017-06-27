@@ -1,16 +1,13 @@
-import * as types from '../constants/voteTypes';
+import * as voteTypes from '../constants/voteTypes';
+
 export default function voteHandler(handlerVotes) {
   let votes = handlerVotes || [];
   return {
-    get votes(){
+    get votes() {
       return votes;
     },
     get sum() {
-      return votes.reduce((a, b) => {
-        let aNum = a.type === types.UP? 1 : -1;
-        let bNum = b.type === types.UP? 1 : -1;
-        return aNum + bNum;
-      });
+      return votes.reduce((a, b) => a + (b.type === voteTypes.UP ? 1 : -1), 0);
     },
     addVote(vote) {
       votes = [...votes, vote];

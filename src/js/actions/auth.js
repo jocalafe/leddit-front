@@ -3,7 +3,7 @@ import { fetchUserLogin } from '../api/auth';
 
 export function loginUser(userName, password) {
   return (dispatch) => {
-    dispatch(loginUserRequest(userName, password));
+    dispatch(loginUserRequest());
     return fetchUserLogin(userName, password).then((user) => {
       dispatch(loginUserSuccess(user));
     }).catch(() => {
