@@ -1,6 +1,7 @@
 import path from 'path';
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   template: path.join(__dirname, '/src/index.html'),
@@ -10,14 +11,15 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 
 export default {
   entry: [
-    path.join(__dirname, '/src/js/index.jsx')
+    path.join(__dirname, '/src/js/index.jsx'),
+    path.join(__dirname, '/src/scss/index.scss')
   ],
   devServer: {
     contentBase: 'src/',
     hot: true,
     inline: true,
-    port: 3000, // Port Number
-    host: 'localhost', // Change to '0.0.0.0' for external facing server
+    port: 3000,
+    host: 'localhost',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -27,16 +29,25 @@ export default {
     extensions: ['.js', '.jsx']
   },
   module: {
-    loaders: [
-      { test: /\.jsx$/, exclude: /node_modules/, loader: 'babel-loader' },
-      { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' },
-      { test: /\.scss$/, loader: 'file-loader', options: { name: '[name].css' } },
-      { test: /\.scss$/, loader: 'sass-loader', options: { outputStyle: 'compressed' } }
+    rules: [
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader'
+      },
+      {
+        test: /\.scss$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: ['css-loader', 'sass-loader']
+        })
+      }
     ]
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     HtmlWebpackPluginConfig,
     new webpack.NamedModulesPlugin(),
+    new ExtractTextPlugin('index.css')
   ]
 };
