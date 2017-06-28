@@ -16,7 +16,7 @@ describe('post object', () => {
   const author = user('author');
   const comments = [comment(1, 'testcomment', [], [])];
   const votes = [vote(1, author, 'UP')];
-  const post1 = post(title, link, desc, author, comments, votes);
+  const post1 = post(1, title, link, desc, author, comments, votes);
   it('can get its title', () => {
     expect(post1.title).toEqual(title);
   });

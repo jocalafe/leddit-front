@@ -3,13 +3,13 @@ import { shallow } from 'enzyme';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-import VoteCounter from './VoteCounter';
+import Post from './Post';
 
-describe('VoteCounter', () => {
+describe('Post', () => {
   it('renders', () => {
     const wrapper = shallow(
       <MuiThemeProvider>
-        <VoteCounter />
+        <Post />
       </MuiThemeProvider>
     );
     expect(wrapper).toMatchSnapshot();

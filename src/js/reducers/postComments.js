@@ -1,11 +1,14 @@
 import * as actionTypes from '../constants/actionTypes';
 
+import post from '../entities/post';
+
 const initialState = {
   isFetchingComments: false,
-  comments: []
+  currentPost: post()
 };
 
 const postCommentsReducer = (state = initialState, action) => {
+  const payload = action.payload;
   switch (action.type) {
     case actionTypes.FETCH_POST_COMMENTS_REQUEST:
       return {
@@ -16,7 +19,16 @@ const postCommentsReducer = (state = initialState, action) => {
       return {
         ...state,
         isFetchingComments: false,
-        comments: [...action.payload.comments]
+      };
+    case actionTypes.SET_CURRENT_POST:
+      return {
+        ...state,
+        currentPost: post(payload.post.id,
+          payload.post.title,
+          payload.post.link,
+          payload.post.description,
+          payload.post.author,
+          payload.comments)
       };
     case actionTypes.FETCH_POST_COMMENTS_FAILURE:
       return {

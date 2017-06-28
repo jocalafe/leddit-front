@@ -2,11 +2,12 @@ import * as actionTypes from '../constants/actionTypes';
 
 import { fetchComments } from '../api/postComments';
 
-export function fetchPostComments(postId) {
+export function fetchPostComments(post) {
   return (dispatch) => {
     dispatch(fetchPostCommentsRequest());
-    return fetchComments(postId).then((comments) => {
-      dispatch(fetchPostCommentsSuccess(comments));
+    return fetchComments(post.id).then((comments) => {
+      dispatch(fetchPostCommentsSuccess());
+      dispatch(setCurrentPost(post, comments));
     }).catch(() => {
       dispatch(fetchPostCommentsFailure());
     });
@@ -19,15 +20,21 @@ export function fetchPostCommentsRequest() {
   };
 }
 
-export function fetchPostCommentsSuccess(comments) {
+export function fetchPostCommentsSuccess() {
   return {
-    type: actionTypes.FETCH_POST_COMMENTS_SUCCESS,
-    payload: { comments }
+    type: actionTypes.FETCH_POST_COMMENTS_SUCCESS
   };
 }
 
 export function fetchPostCommentsFailure() {
   return {
     type: actionTypes.FETCH_POST_COMMENTS_FAILURE
+  };
+}
+
+export function setCurrentPost(post, comments) {
+  return {
+    type: actionTypes.SET_CURRENT_POST,
+    payload: { post, comments }
   };
 }

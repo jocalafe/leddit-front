@@ -4,14 +4,14 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import "isomorphic-fetch";
 
 import Login from './containers/Login';
-import CommentList from './containers/CommentList';
-import commentsHandler from './entities/commentsHandler';
-import comment from './entities/comment';
+import Post from './containers/Post';
 import { fetchPostComments } from './actions/postComments';
+import post from './entities/post';
+import user from './entities/user';
 
 class App extends Component {
   componentDidMount() {
-    this.props.dispatch(fetchPostComments(1));
+    this.props.dispatch(fetchPostComments(post(1, 'posttitle', 'postlink', 'desc', user('user'))));
   }
   render() {
     return (
@@ -19,7 +19,7 @@ class App extends Component {
         <div className='app'>
           <h1> Leddit! </h1>
           <Login />
-          <CommentList />
+          <Post />
         </div>
       </MuiThemeProvider>
     );

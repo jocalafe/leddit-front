@@ -1,18 +1,18 @@
 import React from 'react';
 
-import HardwareKeyboardArrowUp from 'material-ui/svg-icons/hardware/keyboard-arrow-up';
-import HardwareKeyboardArrowDown from 'material-ui/svg-icons/hardware/keyboard-arrow-down';
+import UpVote from '../icons/UpVote';
+import DownVote from '../icons/DownVote';
 
 import IconButton from '../base-components/IconButton';
 
 const VoteCounter = ({ voteHandler, onUpVote, onDownVote }) => (
   <div className='vote-counter'>
     <IconButton className='icon-button' onTouchTap={onUpVote}>
-      <HardwareKeyboardArrowUp />
+      <UpVote />
     </IconButton>
     <div>{voteHandler.sum}</div>
     <IconButton className='icon-button' onTouchTap={onDownVote}>
-      <HardwareKeyboardArrowDown />
+      <DownVote />
     </IconButton>
   </div>
 );
