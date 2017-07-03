@@ -1,10 +1,9 @@
-import React from 'react';
 import { formValueSelector } from 'redux-form';
 import { connect } from 'react-redux';
 
 import { loginUser } from '../actions/auth';
 
-import Login from '../components/Login'
+import Login from '../components/Login';
 
 function mapStateToProps(state) {
   const selector = formValueSelector('LoginForm');

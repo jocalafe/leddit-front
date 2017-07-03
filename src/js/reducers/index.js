@@ -3,12 +3,14 @@ import { reducer as reduxFormReducer } from 'redux-form';
 import reduxThunk from 'redux-thunk';
 
 import authReducer from './auth';
-import postCommentsReducer from './postComments.js';
+import postCommentsReducer from './postComments';
+import subredditPostsReducer from './subredditPosts';
 
 const reducer = combineReducers({
   form: reduxFormReducer,
   auth: authReducer,
-  post: postCommentsReducer
+  post: postCommentsReducer,
+  subreddit: subredditPostsReducer
 });
 const store = createStore(reducer, applyMiddleware(reduxThunk));
 

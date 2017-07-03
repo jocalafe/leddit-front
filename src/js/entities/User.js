@@ -1,9 +1,13 @@
-export default function user(name) {
-  const userName = name;
-  let subscribedSubreddits = [];
+export default function user(userId, userName, userSubscribedSubreddits) {
+  const id = userId;
+  const name = userName;
+  let subscribedSubreddits = userSubscribedSubreddits || [];
   return {
+    get id() {
+      return id;
+    },
     get name() {
-      return userName;
+      return name;
     },
     get subscribedSubreddits() {
       return subscribedSubreddits;
@@ -12,7 +16,7 @@ export default function user(name) {
       subscribedSubreddits = [...subscribedSubreddits, subredditId];
     },
     unSubscribeFromSubreddit(subredditId) {
-      subscribedSubreddits = subscribedSubreddits.filter(id => id !== subredditId);
+      subscribedSubreddits = subscribedSubreddits.filter(subscribedId => subscribedId !== subredditId);
     }
   };
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import UpVote from '../icons/UpVote';
 import DownVote from '../icons/DownVote';
@@ -16,5 +17,11 @@ const VoteCounter = ({ voteHandler, onUpVote, onDownVote }) => (
     </IconButton>
   </div>
 );
+
+VoteCounter.propTypes = {
+  voteHandler: PropTypes.object,
+  onUpVote: PropTypes.func,
+  onDownVote: PropTypes.func
+};
 
 export default VoteCounter;

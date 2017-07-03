@@ -1,8 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import List from '../base-components/List';
 
-import Comment from './Comment';
 import commentArrayToComponentArray from '../utils/commentArrayToComponentArray';
 
 const CommentList = ({ comments, ...rest }) => (
@@ -10,5 +10,9 @@ const CommentList = ({ comments, ...rest }) => (
     { commentArrayToComponentArray(comments) }
   </List>
 );
+
+CommentList.propTypes = {
+  comments: PropTypes.array
+};
 
 export default CommentList;

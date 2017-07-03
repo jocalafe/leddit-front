@@ -14,6 +14,7 @@ export default {
     path.join(__dirname, '/src/js/index.jsx'),
     path.join(__dirname, '/src/scss/index.scss')
   ],
+  devtool: 'cheap-eval-source-map',
   devServer: {
     contentBase: 'src/',
     hot: true,

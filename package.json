@@ -5,7 +5,7 @@
   "main": "src/js/index.js",
   "scripts": {
     "test": "jest",
-    "lint": "eslint ./ && sass-lint --verbose ",
+    "lint": "eslint ./ --ext .jsx --ext .js && sass-lint --verbose ",
     "dev": "webpack-dev-server",
     "build": "webpack -p",
     "tags": "ctags -R --exclude=node_modules --exclude=__snapshots__ --exclude=coverage --exclude=dist"
@@ -64,6 +64,7 @@
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.5",
+    "react-router-dom": "^4.1.1",
     "react-tap-event-plugin": "^2.0.1",
     "redux": "^3.6.0",
     "redux-form": "^6.7.0",

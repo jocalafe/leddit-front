@@ -1,5 +1,9 @@
-export default function subreddit(name) {
-  const subredditName = name;
+import postsHandler from './postsHandler';
+
+export default function subreddit(subredditId, subredditName, subredditBanner, subredditPosts) {
+  const id = subredditId;
+  const name = subredditName;
+  const banner = subredditBanner;
   if (subredditName === undefined) {
     throw new Error('subreddit name is required');
   }
@@ -7,8 +11,15 @@ export default function subreddit(name) {
     throw new Error('subreddit name should not be empty');
   }
   return {
+    get id() {
+      return id;
+    },
     get name() {
-      return subredditName;
-    }
+      return name;
+    },
+    get banner() {
+      return banner;
+    },
+    postsHandler: postsHandler(subredditPosts)
   };
 }

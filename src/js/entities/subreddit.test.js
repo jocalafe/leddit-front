@@ -2,7 +2,7 @@ import subreddit from './subreddit';
 
 describe('Subreddit factory function', () => {
   it('should return an object', () => {
-    expect(subreddit('test')).toEqual(expect.any(Object));
+    expect(subreddit(1, 'test')).toEqual(expect.any(Object));
   });
   it('should throw unnamed subreddit error when name is not supplied', () => {
     expect(() => {
@@ -12,7 +12,7 @@ describe('Subreddit factory function', () => {
 
   it('should throw subreddit name should not be empty error when name is empty', () => {
     expect(() => {
-      subreddit('');
+      subreddit(1, '');
     }).toThrow('subreddit name should not be empty');
   });
 });
@@ -20,7 +20,7 @@ describe('Subreddit factory function', () => {
 describe('subreddit object', () => {
   it('can get its name', () => {
     const name = 'testSub';
-    const subreddit1 = subreddit(name);
+    const subreddit1 = subreddit(1, name);
     expect(subreddit1.name).toEqual(name);
   });
 });

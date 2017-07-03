@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
-import store from './reducers/index.js'
+import store from './reducers/index.js';
 
 import '../scss/index.scss';
 

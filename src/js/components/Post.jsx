@@ -1,6 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-import Card from '../base-components/Card';
 import CommentList from './CommentList';
 
 const Post = ({ post }) => (
@@ -13,4 +13,7 @@ const Post = ({ post }) => (
   </div>
 );
 
+Post.propTypes = {
+  post: PropTypes.object
+};
 export default Post;

@@ -10,5 +10,13 @@ const LedditIconButton = ({ children, href, onTouchTap, ...rest }) => (
   </IconButton>
 );
 
+LedditIconButton.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node]),
+  href: PropTypes.string,
+  onTouchTap: PropTypes.func
+};
+
 export default LedditIconButton;
 
