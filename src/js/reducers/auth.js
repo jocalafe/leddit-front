@@ -1,31 +1,44 @@
-import { LOGIN_USER_REQUEST, LOGIN_USER_SUCCESS, LOGIN_USER_FAILURE } from '../constants/actionTypes';
+import * as actionTypes from '../constants/actionTypes';
+
+import user from '../entities/user';
 
 const initialState = {
   isAuthenticating: false,
-  user: null,
+  isFetchingSubscriptions: false,
+  user: user(-1, ''),
   status: ''
 };
 
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
-    case LOGIN_USER_REQUEST:
+    case actionTypes.LOGIN_USER_REQUEST:
       return {
         ...state,
         isAuthenticating: true
       };
-    case LOGIN_USER_SUCCESS:
+    case actionTypes.LOGIN_USER_SUCCESS:
       return {
         ...state,
         isAuthenticating: false,
         user: { ...action.payload.user },
         status: 'Login successfull'
       };
-    case LOGIN_USER_FAILURE:
+    case actionTypes.LOGIN_USER_FAILURE:
       return {
         ...state,
         isAuthenticating: false,
-        isAuthenticated: false,
         status: 'Login error'
+      };
+    case actionTypes.FETCH_SUBSCRIPTIONS_REQUEST:
+      return {
+        ...state,
+        isFetchingSubscriptions: true
+      };
+    case actionTypes.FETCH_SUBSCRIPTIONS_SUCCESS:
+      return {
+        ...state,
+        isFetchingSubscriptions: false,
+        user: user(state.user.id, state.user.name, [...action.payload.subscriptions])
       };
     default:
       return { ...state };

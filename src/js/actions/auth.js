@@ -1,5 +1,6 @@
-import { LOGIN_USER_REQUEST, LOGIN_USER_SUCCESS, LOGIN_USER_FAILURE } from '../constants/actionTypes';
+import * actionTypes from '../constants/actionTypes';
 import { fetchUserLogin } from '../api/auth';
+import { fetchUserSubscriptions } from '../api/subscriptions';
 
 export function loginUser(userName, password) {
   return (dispatch) => {
@@ -12,21 +13,52 @@ export function loginUser(userName, password) {
   };
 }
 
-export function loginUserRequest() {
+function loginUserRequest() {
   return {
-    type: LOGIN_USER_REQUEST
+    type: actionTypes.LOGIN_USER_REQUEST
   };
 }
 
-export function loginUserSuccess(user) {
+function loginUserSuccess(user) {
   return {
-    type: LOGIN_USER_SUCCESS,
+    type: actionTypes.LOGIN_USER_SUCCESS,
     payload: { user }
   };
 }
 
-export function loginUserFailure() {
+function loginUserFailure() {
   return {
-    type: LOGIN_USER_FAILURE
+    type: actionTypes.LOGIN_USER_FAILURE
+  };
+}
+
+export function fetchSubscriptions(user) {
+  return (dispatch) => {
+    dispatch(fetchSubscriptionsRequest());
+    return fetchUserSubscriptions(user.id).then((subscriptions) => {
+      dispatch(fetchSubscriptionsSuccess(user, subscriptions));
+    }).catch((error) => {
+      console.log(error);
+      dispatch(fetchSubscriptionsFailure());
+    });
+  };
+}
+
+function fetchSubscriptionsRequest() {
+  return {
+    type: actionTypes.FETCH_SUBSCRIPTIONS_REQUEST
+  };
+}
+
+function fetchSubscriptionsSuccess(user, subscriptions) {
+  return {
+    type: actionTypes.FETCH_SUBSCRIPTIONS_SUCCESS,
+    payload: { user, subscriptions }
+  };
+}
+
+function fetchSubscriptionsFailure() {
+  return {
+    type: actionTypes.FETCH_SUBSCRIPTIONS_FAILURE
   };
 }

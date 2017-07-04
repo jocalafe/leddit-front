@@ -7,13 +7,13 @@ import VoteCounter from './VoteCounter';
 import commentArrayToComponentArray from '../utils/commentArrayToComponentArray';
 
 const Comment = ({ className, text, commentsHandler, voteHandler }) => {
-  const nestedItems = commentArrayToComponentArray(commentsHandler.comments, 'nested-comment');
+  const nestedItems = commentArrayToComponentArray(commentsHandler.comments, 'nested-item');
   return (
     <div className={className}>
-      <ListItem className='comment'
+      <ListItem className='list-item'
         nestedItems={nestedItems}>
         <VoteCounter voteHandler={voteHandler} />
-        <div className='comment-text'>
+        <div className='item-text'>
           {text}
         </div>
       </ListItem>

@@ -7,9 +7,9 @@ import VoteCounter from './VoteCounter';
 
 const SubredditItem = ({ className, subreddit }) => (
   <div className={className}>
-    <ListItem className='comment'>
+    <ListItem className='list-item'>
       <VoteCounter voteHandler={subreddit.voteHandler} />
-      <div className='comment-text'> {subreddit.title} </div>
+      <div className='item-text'> {subreddit.title} </div>
     </ListItem>
   </div>
 );
