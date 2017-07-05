@@ -1,9 +1,9 @@
-import user from '../entities/user';
+import { testUser } from './tmpApiData';
 
 export function fetchUserLogin(userName, password) {
   return new Promise((resolve, reject) => {
     if (userName === 'test' && password === 'test') {
-      resolve(user(1, userName));
+      resolve(testUser);
     } else {
       reject();
     }

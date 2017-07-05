@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 
 import Post from '../components/Post';
 
@@ -9,4 +10,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(Post);
+export default withRouter(connect(mapStateToProps)(Post));

@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 
 import Subreddit from '../components/Subreddit';
 
@@ -9,4 +10,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(Subreddit);
+export default withRouter(connect(mapStateToProps)(Subreddit));

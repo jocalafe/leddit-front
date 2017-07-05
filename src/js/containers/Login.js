@@ -1,5 +1,6 @@
 import { formValueSelector } from 'redux-form';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 
 import { loginUser } from '../actions/auth';
 
@@ -13,7 +14,7 @@ function mapStateToProps(state) {
       password: selector(state, 'password')
     },
     isAuthenticated: state.auth.isAuthenticated,
-    status: state.auth.status
+    user: state.auth.user
   };
 }
 
@@ -25,4 +26,4 @@ function mapDispatchToProps(dispatch) {
     }
   };
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Login));

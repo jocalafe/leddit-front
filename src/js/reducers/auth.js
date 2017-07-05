@@ -40,6 +40,11 @@ const authReducer = (state = initialState, action) => {
         isFetchingSubscriptions: false,
         user: user(state.user.id, state.user.name, [...action.payload.subscriptions])
       };
+    case actionTypes.FETCH_SUBSCRIPTIONS_FAILURE:
+      return {
+        ...state,
+        isFetchingSubscriptions: false
+      };
     default:
       return { ...state };
   }

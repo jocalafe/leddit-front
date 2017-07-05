@@ -1,6 +1,7 @@
 import postsHandler from './postsHandler';
+import voteHandler from './voteHandler';
 
-export default function subreddit(subredditId, subredditName, subredditBanner, subredditPosts) {
+export default function subreddit(subredditId, subredditName, subredditBanner, subredditPosts, subredditVotes) {
   const id = subredditId;
   const name = subredditName;
   const banner = subredditBanner;
@@ -20,6 +21,7 @@ export default function subreddit(subredditId, subredditName, subredditBanner, s
     get banner() {
       return banner;
     },
-    postsHandler: postsHandler(subredditPosts)
+    postsHandler: postsHandler(subredditPosts),
+    voteHandler: voteHandler(subredditVotes)
   };
 }

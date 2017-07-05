@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 
 import CommentList from '../components/CommentList';
 
@@ -9,4 +10,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(CommentList);
+export default withRouter(connect(mapStateToProps)(CommentList));

@@ -23,6 +23,7 @@
     "react/jsx-boolean-value": 0,
     "react/jsx-first-prop-new-line": 0,
     "react/jsx-closing-bracket-location": 0,
+    "jsx-a11y/anchor-has-content": "off",
     "react/no-multi-comp": 0,
     "react/prefer-stateless-function": 0,
     "import/no-unresolved": 0,

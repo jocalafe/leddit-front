@@ -4,11 +4,11 @@ import expect from 'expect';
 
 import * as actionTypes from '../constants/actionTypes';
 import { loginUser } from '../actions/auth';
-import { fetchSubscriptions } from '../actions/subscriptions';
+import { fetchSubscriptions } from '../actions/auth';
 
 import user from '../entities/user';
-import subreddit from '../entities/subreddit';
 
+import { testUser, subscriptions } from '../api/tmpApiData';
 const mockStore = configureMockStore([thunk]);
 
 describe('login user action creator', () => {
@@ -21,8 +21,15 @@ describe('login user action creator', () => {
       {
         type: actionTypes.LOGIN_USER_SUCCESS,
         payload: {
-          user: user(1, 'test')
+          user: testUser
         }
+      },
+      {
+        type: actionTypes.FETCH_SUBSCRIPTIONS_REQUEST
+      },
+      {
+        type: actionTypes.FETCH_SUBSCRIPTIONS_SUCCESS,
+        payload: { user: testUser, subscriptions }
       }
     ];
     return store.dispatch(loginUser('test', 'test'))
@@ -39,47 +46,9 @@ describe('login user action creator', () => {
       },
       {
         type: actionTypes.LOGIN_USER_FAILURE
-      }
+      },
     ];
     return store.dispatch(loginUser('aaa', 'aaa'))
-      .then(() => {
-        expect(store.getActions()).toEqual(expectedActions);
-      });
-  });
-
-  it('creates actionTypes.FETCH_SUBSCRIPTIONS_SUCCES when fetching subreddit posts has been done', () => {
-    const store = mockStore({});
-    const user1 = user(1, 'test');
-    const subscriptions = [subreddit(1, 'DOTA2'), subreddit(1, 'chelseafc')];
-    const expectedActions = [
-      {
-        type: actionTypes.FETCH_SUBSCRIPTIONS_REQUEST
-      },
-      {
-        type: actionTypes.FETCH_SUBSCRIPTIONS_SUCCES,
-        payload: {
-          user: user1,
-          subscriptions
-        }
-      }
-    ];
-    return store.dispatch(fetchSubscriptions(user1))
-      .then(() => {
-        expect(store.getActions()).toEqual(expectedActions);
-      });
-  });
-
-  it('creates actionTypes.FETCH_SUBSCRIPTIONS_FAILURE when fetching subscriptions encounters an error', () => {
-    const store = mockStore({});
-    const expectedActions = [
-      {
-        type: actionTypes.FETCH_SUBSCRIPTIONS_REQUEST
-      },
-      {
-        type: actionTypes.FETCH_SUBSCRIPTIONS_FAILURE
-      }
-    ];
-    return store.dispatch(fetchSubscriptions(user(2, 'test2')))
       .then(() => {
         expect(store.getActions()).toEqual(expectedActions);
       });

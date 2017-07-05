@@ -1,4 +1,4 @@
-import * actionTypes from '../constants/actionTypes';
+import * as actionTypes from '../constants/actionTypes';
 import { fetchUserLogin } from '../api/auth';
 import { fetchUserSubscriptions } from '../api/subscriptions';
 
@@ -7,6 +7,7 @@ export function loginUser(userName, password) {
     dispatch(loginUserRequest());
     return fetchUserLogin(userName, password).then((user) => {
       dispatch(loginUserSuccess(user));
+      dispatch(fetchSubscriptions(user));
     }).catch(() => {
       dispatch(loginUserFailure());
     });
@@ -37,8 +38,7 @@ export function fetchSubscriptions(user) {
     dispatch(fetchSubscriptionsRequest());
     return fetchUserSubscriptions(user.id).then((subscriptions) => {
       dispatch(fetchSubscriptionsSuccess(user, subscriptions));
-    }).catch((error) => {
-      console.log(error);
+    }).catch(() => {
       dispatch(fetchSubscriptionsFailure());
     });
   };

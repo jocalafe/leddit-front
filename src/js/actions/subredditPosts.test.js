@@ -8,15 +8,13 @@ import { fetchSubredditPosts } from '../actions/subredditPosts';
 import subreddit from '../entities/subreddit';
 import user from '../entities/user';
 import post from '../entities/post';
+import { subscriptions, postsDota } from '../api/tmpApiData';
 
 const mockStore = configureMockStore([thunk]);
 
 describe('fetchSubredditPosts action creator', () => {
   it('creates actionTypes.FETCH_SUBREDDIT_POSTS_SUCCESS when fetching subreddit posts has been done', () => {
     const store = mockStore({});
-    const subreddit1 = subreddit(1, 'subredditname');
-    const posts = [post(1, 'posttitle', 'www.facebook.com', 'desc', user('user')),
-      post(2, 'posttitle2', 'www.google.com', 'desc2', user('user2'))];
     const expectedActions = [
       {
         type: actionTypes.FETCH_SUBREDDIT_POSTS_REQUEST
@@ -27,12 +25,12 @@ describe('fetchSubredditPosts action creator', () => {
       {
         type: actionTypes.SET_CURRENT_SUBREDDIT,
         payload: {
-          subreddit: subreddit1,
-          posts
+          subreddit: subscriptions[0],
+          posts: [...postsDota]
         }
       }
     ];
-    return store.dispatch(fetchSubredditPosts(subreddit1))
+    return store.dispatch(fetchSubredditPosts(subscriptions[0]))
       .then(() => {
         expect(store.getActions()).toEqual(expectedActions);
       });
@@ -48,7 +46,7 @@ describe('fetchSubredditPosts action creator', () => {
         type: actionTypes.FETCH_SUBREDDIT_POSTS_FAILURE
       }
     ];
-    return store.dispatch(fetchSubredditPosts(subreddit(2, 'subredditname')))
+    return store.dispatch(fetchSubredditPosts(subreddit(-1, 'subredditname')))
       .then(() => {
         expect(store.getActions()).toEqual(expectedActions);
       });

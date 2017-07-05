@@ -5,14 +5,17 @@ import List from '../base-components/List';
 
 import SubredditItem from './SubredditItem';
 
-const SubredditList = ({ subreddits, ...rest }) => (
+const SubredditList = ({ user, handleTouchTap, ...rest }) => (
   <List {...rest}>
-    {subreddits.map((subreddit, index) => <SubredditItem key={index} subreddit={subreddit} />)}
+    {user.subscribedSubreddits.map((subreddit, index) => <SubredditItem key={index}
+      subreddit={subreddit}
+      onTouchTap={() => handleTouchTap(subreddit)} />)}
   </List>
 );
 
 SubredditList.propTypes = {
-  subreddits: PropTypes.object
+  user: PropTypes.object,
+  handleTouchTap: PropTypes.func
 };
 
 export default SubredditList;

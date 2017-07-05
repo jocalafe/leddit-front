@@ -21,6 +21,7 @@ export default {
     inline: true,
     port: 3000,
     host: 'localhost',
+    historyApiFallback: true
   },
   output: {
     path: path.resolve(__dirname, 'dist'),

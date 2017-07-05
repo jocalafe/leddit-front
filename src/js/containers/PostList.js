@@ -1,6 +1,9 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 
 import PostList from '../components/PostList';
+
+import { fetchPostComments } from '../actions/postComments';
 
 function mapStateToProps(state) {
   return {
@@ -9,4 +12,13 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(PostList);
+function mapDispatchToProps(dispatch) {
+  return {
+    handleTouchTap(history, post) {
+      dispatch(fetchPostComments(post));
+      history.push(`${history.location.pathname}/${post.id}`);
+    }
+  };
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PostList));
