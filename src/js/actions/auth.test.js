@@ -4,11 +4,9 @@ import expect from 'expect';
 
 import * as actionTypes from '../constants/actionTypes';
 import { loginUser } from '../actions/auth';
-import { fetchSubscriptions } from '../actions/auth';
-
-import user from '../entities/user';
 
 import { testUser, subscriptions } from '../api/tmpApiData';
+
 const mockStore = configureMockStore([thunk]);
 
 describe('login user action creator', () => {

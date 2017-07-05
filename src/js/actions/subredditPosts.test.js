@@ -6,8 +6,7 @@ import * as actionTypes from '../constants/actionTypes';
 import { fetchSubredditPosts } from '../actions/subredditPosts';
 
 import subreddit from '../entities/subreddit';
-import user from '../entities/user';
-import post from '../entities/post';
+
 import { subscriptions, postsDota } from '../api/tmpApiData';
 
 const mockStore = configureMockStore([thunk]);

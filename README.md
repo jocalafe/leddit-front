@@ -28,6 +28,11 @@ npm run dev
 npm run test
 ```
 
+```
+user: test
+password: test
+```
+
 ## Building the app:
 
 ```
