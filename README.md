@@ -21,16 +21,15 @@ npm install
 ```
 npm run dev
 ```
+```
+user: test
+password: test
+```
 
 ## Running the test suites:
 
 ```
 npm run test
-```
-
-```
-user: test
-password: test
 ```
 
 ## Building the app:
