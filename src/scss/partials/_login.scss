@@ -1,0 +1,16 @@
+.login {
+  text-align: center;
+  max-width: 256px;
+  margin: 0 auto;
+  display: block;
+  .login-buttons {
+    margin-top: 20px;
+    @include clearfix();
+    .submit-button {
+      float: left;
+    }
+    .register-button {
+      float: right;
+    }
+  }
+}

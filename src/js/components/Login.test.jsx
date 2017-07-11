@@ -35,7 +35,7 @@ describe('Login', () => {
     );
     expect(wrapper.find('TextField').length).toBe(2);
   });
-  it('renders one button', () => {
+  it('renders two buttons', () => {
     const wrapper = mount(
       <MuiThemeProvider>
         <Provider store={store}>
@@ -43,6 +43,6 @@ describe('Login', () => {
         </Provider>
       </MuiThemeProvider>
     );
-    expect(wrapper.find('button').length).toBe(1);
+    expect(wrapper.find('button').length).toBe(2);
   });
 });

@@ -13,7 +13,8 @@ const LedditButton = ({ className,
   href,
   icon,
   label,
-  onTouchTap }) => {
+  onTouchTap,
+  hoverColor }) => {
   const ButtonStyle = buttonStyle === 'raised' ? RaisedButton : FlatButton;
   return (
     <div className={className}>
@@ -25,7 +26,8 @@ const LedditButton = ({ className,
         href={href}
         icon={icon}
         label={label}
-        onTouchTap={onTouchTap}>
+        onTouchTap={onTouchTap}
+        hoverColor={hoverColor}>
         {children}
       </ButtonStyle>
     </div>

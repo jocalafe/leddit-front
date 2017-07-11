@@ -7,12 +7,14 @@ import 'isomorphic-fetch';
 
 import Main from './routes/Main';
 
+import AppBar from './base-components/AppBar';
+
 class App extends Component {
   render() {
     return (
       <MuiThemeProvider>
         <div className='app'>
-          <h1> Leddit! </h1>
+          <AppBar title='Leddit!' />
           <Main isAuthenticating={this.props.isAuthenticating}
             user={this.props.user} />
         </div>

@@ -7,7 +7,7 @@ import SubredditItem from './SubredditItem';
 
 const SubredditList = ({ user, handleTouchTap, ...rest }) => (
   <List {...rest}>
-    {user.subscribedSubreddits.map((subreddit, index) => <SubredditItem key={index}
+    {user.subscriptions.map((subreddit, index) => <SubredditItem key={index}
       subreddit={subreddit}
       onTouchTap={() => handleTouchTap(subreddit)} />)}
   </List>

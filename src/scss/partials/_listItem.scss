@@ -1,13 +1,9 @@
-$comment-border: 1px solid LightGrey;
-
 .list-item {
   border: {
-    top: $comment-border !important;
+    top: $item-border !important;
   }
-  div {
-    padding: 0px !important;
-    overflow: hidden !important;
-  }
+  padding: 0px !important;
+  overflow: hidden !important;
   .item-text {
     margin: {
       left: 30px !important;

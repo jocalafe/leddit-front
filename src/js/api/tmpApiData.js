@@ -20,4 +20,7 @@ export const postsCfc = [post(6, 'cfcpost1', 'www.facebook.com', 'cfc is the tea
   post(7, 'cfcpost2', 'www.google.com', 'cfc is legit', user(2, 'user2')),
   post(8, 'cfcpost3', 'www.google.com', 'cfc is legit', user(3, 'user3'))];
 
-export const subscriptions = [subreddit(1, 'DOTA2'), subreddit(2, 'chelseafc')];
+export const subscriptions = [subreddit(1, 'DOTA2', 'http://i.imgur.com/Kgy8F.jpg'),
+  subreddit(2, 'chelseafc',
+    'http://vignette2.wikia.nocookie.net/chelseafc/' +
+      'images/5/5a/Chelsea-banner_%282%29.jpg/revision/latest?cb=20110131225713')];

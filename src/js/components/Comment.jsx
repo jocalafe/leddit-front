@@ -11,6 +11,7 @@ const Comment = ({ className, text, commentsHandler, voteHandler }) => {
   return (
     <div className={className}>
       <ListItem className='list-item'
+        disabled={true}
         nestedItems={nestedItems}>
         <VoteCounter voteHandler={voteHandler} />
         <div className='item-text'>

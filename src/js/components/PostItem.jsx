@@ -6,11 +6,12 @@ import Button from '../base-components/Button';
 
 import VoteCounter from './VoteCounter';
 
-const PostItem = ({ className, post, onTouchTap }) => (
-  <div className={className}>
-    <ListItem className='list-item'>
+const PostItem = ({ post, onTouchTap }) => (
+  <div className='list-item'>
+    <ListItem disabled={true}>
       <VoteCounter voteHandler={post.voteHandler} />
       <Button className='item-text'
+        hoverColor='#FFFFF'
         onTouchTap={onTouchTap}>
         {post.title}
       </Button>
@@ -19,7 +20,6 @@ const PostItem = ({ className, post, onTouchTap }) => (
 );
 
 PostItem.propTypes = {
-  className: PropTypes.string,
   post: PropTypes.object,
   onTouchTap: PropTypes.func
 };
