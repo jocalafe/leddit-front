@@ -1,0 +1,6 @@
+node_modules/**
+dist/**
+dist-server/**
+coverage/**
+src/js/components/HPELogo.js
+tags
