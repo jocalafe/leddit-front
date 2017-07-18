@@ -1,10 +1,7 @@
 import commentsHandler from './commentsHandler';
 import voteHandler from './voteHandler';
 
-export default function comment(commentId, commentText, commentAuthor, commentComments, commentVotes) {
-  const id = commentId;
-  let text = commentText;
-  const author = commentAuthor;
+export default function comment(id, text, author, comments, votes) {
   return {
     get id() {
       return id;
@@ -12,13 +9,13 @@ export default function comment(commentId, commentText, commentAuthor, commentCo
     get text() {
       return text;
     },
+    setText(newText) {
+      text = newText;
+    },
     get author() {
       return author;
     },
-    commentsHandler: commentsHandler(commentComments),
-    voteHandler: voteHandler(commentVotes),
-    setText(newText) {
-      text = newText;
-    }
+    commentsHandler: commentsHandler(comments),
+    voteHandler: voteHandler(votes)
   };
 }

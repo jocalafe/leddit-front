@@ -1,20 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { CardTitle } from 'material-ui/Card';
+import { CardTitle as MuiCardTitle } from 'material-ui/Card';
 
-const LedditCardTitle = ({ title, subtitle, children }) => (
-  <CardTitle title={title}
+const CardTitle = ({ title, subtitle, children }) => (
+  <MuiCardTitle title={title}
     subtitle={subtitle}>
     {children}
-  </CardTitle>
+  </MuiCardTitle>
 );
 
-LedditCardTitle.propTypes = {
+CardTitle.propTypes = {
   title: PropTypes.string,
   subtitle: PropTypes.string,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node]),
+    PropTypes.node
+  ])
 };
 
-export default LedditCardTitle;
+export default CardTitle;

@@ -10,34 +10,41 @@ describe('post factory function', () => {
 });
 
 describe('post object', () => {
-  const title = 'title';
-  const link = 'link';
-  let desc = 'desc';
-  const author = user('author');
-  const comments = [comment(1, 'testcomment', [], [])];
-  const votes = [vote(1, author, 'UP')];
-  const post1 = post(1, title, link, desc, author, comments, votes);
+  let testPost;
+
+  beforeEach(() => {
+    testPost = post(1, 'title', 'link', 'description', user(1, 'author'),
+      [comment(1, 'testcomment')], [vote(1, user(1, 'author'), 'UP')]);
+  });
+
   it('can get its title', () => {
-    expect(post1.title).toEqual(title);
+    expect(testPost.title).toEqual('title');
   });
+
   it('can get its link', () => {
-    expect(post1.link).toEqual(link);
+    expect(testPost.link).toEqual('link');
   });
+
   it('can get its description', () => {
-    expect(post1.description).toEqual(desc);
+    expect(testPost.description).toEqual('description');
   });
+
   it('can get its author', () => {
-    expect(post1.author).toEqual(author);
+    expect(testPost.author).toEqual(expect.any(Object));
+    expect(testPost.author.id).toEqual(1);
+    expect(testPost.author.name).toEqual('author');
   });
-  it('can get its comments', () => {
-    expect(post1.author).toEqual(author);
+
+  it('has a comments handler', () => {
+    expect(testPost.commentsHandler).toEqual(expect.any(Object));
   });
-  it('can get its votes', () => {
-    expect(post1.voteHandler.votes).toEqual(votes);
+
+  it('has a votes handler', () => {
+    expect(testPost.voteHandler).toEqual(expect.any(Object));
   });
+
   it('can set its description', () => {
-    desc = 'newdesc';
-    post1.setDescription(desc);
-    expect(post1.description).toEqual(desc);
+    testPost.setDescription('new description');
+    expect(testPost.description).toEqual('new description');
   });
 });

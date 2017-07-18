@@ -1,31 +1,30 @@
 import React from 'react';
-import TextField from 'material-ui/TextField';
+import MuiTextField from 'material-ui/TextField';
 import PropTypes from 'prop-types';
 
-const LedditTextField = ({ input,
-  hint,
+const TextField = ({ hint,
   type,
   disabled = false,
-  meta: { touched, error },
+  meta,
+  input,
   ...rest }) => (
     <div>
-      <TextField
-        {...input}
-        hintText={hint}
+      <MuiTextField hintText={hint}
         floatingLabelText={hint}
         type={type}
         disabled={disabled}
-        errorText={touched && error}
+        errorText={meta.touched && meta.errorText}
+        {...input}
         {...rest} />
     </div>
 );
 
-LedditTextField.propTypes = {
-  input: PropTypes.object,
+TextField.propTypes = {
   hint: PropTypes.string,
   type: PropTypes.string,
   disabled: PropTypes.bool,
-  meta: PropTypes.object
+  meta: PropTypes.object,
+  input: PropTypes.object
 };
 
-export default LedditTextField;
+export default TextField;

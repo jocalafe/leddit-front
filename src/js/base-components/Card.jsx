@@ -1,28 +1,29 @@
 import React from 'react';
-import { Card } from 'material-ui/Card';
+import { Card as MuiCard } from 'material-ui/Card';
 import PropTypes from 'prop-types';
 
-const LedditCard = ({ children,
+const Card = ({ children,
   style,
   containerStyle,
   expandable = false,
   expanded,
   initiallyExpanded = false,
   onExpandChange }) => (
-    <Card style={style}
+    <MuiCard style={style}
       containerStyle={containerStyle}
       expandable={expandable}
       expanded={expanded}
       initiallyExpanded={initiallyExpanded}
       onExpandChange={onExpandChange}>
       {children}
-    </Card>
+    </MuiCard>
 );
 
-LedditCard.propTypes = {
+Card.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node]),
+    PropTypes.node
+  ]),
   style: PropTypes.object,
   containerStyle: PropTypes.string,
   expandable: PropTypes.bool,
@@ -31,4 +32,4 @@ LedditCard.propTypes = {
   onExpandChange: PropTypes.func
 };
 
-export default LedditCard;
+export default Card;

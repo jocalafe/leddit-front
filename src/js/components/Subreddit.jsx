@@ -6,7 +6,7 @@ import CardMedia from '../base-components/CardMedia';
 import CardTitle from '../base-components/CardTitle';
 
 const Subreddit = ({ subreddit, children }) => (
-  <Card expanded={true}>
+  <Card expanded>
     <CardMedia>
       <img src={subreddit.banner} alt='' />
     </CardMedia>
@@ -19,7 +19,8 @@ Subreddit.propTypes = {
   subreddit: PropTypes.object,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node])
+    PropTypes.node
+  ])
 };
 
 export default Subreddit;

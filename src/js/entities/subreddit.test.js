@@ -18,10 +18,30 @@ describe('Subreddit factory function', () => {
 });
 
 describe('subreddit object', () => {
+  let testSubreddit;
+
+  beforeEach(() => {
+    testSubreddit = subreddit(1, 'testSub', 'banner');
+  });
+
+  it('can get its id', () => {
+    expect(testSubreddit.id).toEqual(1);
+  });
+
   it('can get its name', () => {
-    const name = 'testSub';
-    const subreddit1 = subreddit(1, name);
-    expect(subreddit1.name).toEqual(name);
+    expect(testSubreddit.name).toEqual('testSub');
+  });
+
+  it('can get its banner', () => {
+    expect(testSubreddit.banner).toEqual('banner');
+  });
+
+  it('has a postsHandler', () => {
+    expect(testSubreddit.postsHandler).toEqual(expect.any(Object));
+  });
+
+  it('has a votes handler', () => {
+    expect(testSubreddit.voteHandler).toEqual(expect.any(Object));
   });
 });
 

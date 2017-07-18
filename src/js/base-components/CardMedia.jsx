@@ -1,18 +1,19 @@
 import React from 'react';
-import { CardMedia } from 'material-ui/Card';
+import { CardMedia as MuiCardMedia } from 'material-ui/Card';
 import PropTypes from 'prop-types';
 
-const LedditCardMedia = ({ overlay, children }) => (
-  <CardMedia overlay={overlay}>
+const CardMedia = ({ overlay, children }) => (
+  <MuiCardMedia overlay={overlay}>
     {children}
-  </CardMedia>
+  </MuiCardMedia>
 );
 
-LedditCardMedia.propTypes = {
-  overlay: PropTypes.node,
+CardMedia.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node])
+    PropTypes.node
+  ]),
+  overlay: PropTypes.node
 };
 
-export default LedditCardMedia;
+export default CardMedia;

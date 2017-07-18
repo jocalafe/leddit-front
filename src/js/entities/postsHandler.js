@@ -1,5 +1,5 @@
-export default function postsHandler(handlerPosts) {
-  const posts = handlerPosts || [];
+export default function postsHandler(initialPosts = []) {
+  const posts = initialPosts || [];
   return {
     get posts() {
       return posts;

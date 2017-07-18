@@ -1,12 +1,8 @@
 import commentsHandler from './commentsHandler';
 import voteHandler from './voteHandler';
 
-export default function post(postId, postTitle, postLink, postDescription, postAuthor, postComments, postVotes) {
-  const id = postId;
-  const title = postTitle;
-  const link = postLink || '';
-  let description = postDescription || '';
-  const author = postAuthor;
+export default function post(id, title, link, initialDescription, author, comments, votes) {
+  let description = initialDescription || '';
   return {
     get id() {
       return id;
@@ -20,13 +16,13 @@ export default function post(postId, postTitle, postLink, postDescription, postA
     get description() {
       return description;
     },
+    setDescription(newDescription) {
+      description = newDescription;
+    },
     get author() {
       return author;
     },
-    commentsHandler: commentsHandler(postComments),
-    voteHandler: voteHandler(postVotes),
-    setDescription(newDescription) {
-      description = newDescription;
-    }
+    commentsHandler: commentsHandler(comments),
+    voteHandler: voteHandler(votes),
   };
 }

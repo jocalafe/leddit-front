@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import ListItem from '../base-components/ListItem';
 import Button from '../base-components/Button';
 
+import { white } from '../constants/colors';
+
 import VoteCounter from './VoteCounter';
 
 const SubredditItem = ({ subreddit, onTouchTap }) => (
@@ -12,7 +14,7 @@ const SubredditItem = ({ subreddit, onTouchTap }) => (
     <ListItem disabled={true}>
       <VoteCounter voteHandler={subreddit.voteHandler} />
       <Button className='item-text'
-        hoverColor='#FFFFF'
+        hoverColor={white}
         onTouchTap={onTouchTap}
         container={<Link to={`/r/${subreddit.name}`} />}>
         {subreddit.name}

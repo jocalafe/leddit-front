@@ -1,15 +1,16 @@
 import React from 'react';
-import { List } from 'material-ui/List';
+import { List as MuiList } from 'material-ui/List';
 import PropTypes from 'prop-types';
 
-const LedditList = ({ children }) => (
-  <List> {children} </List>
+const List = ({ children }) => (
+  <MuiList> {children} </MuiList>
 );
 
-LedditList.propTypes = {
+List.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node])
+    PropTypes.node
+  ])
 };
 
-export default LedditList;
+export default List;

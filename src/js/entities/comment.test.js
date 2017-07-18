@@ -8,27 +8,33 @@ describe('comment factory function', () => {
 });
 
 describe('comment object', () => {
-  const id = 1;
-  let text = 'comment text';
-  const comments = [comment(2, 'text2')];
-  const author = user('testUser');
-  const comment1 = comment(id, text, author, comments);
+  let testComment;
+
+  beforeEach(() => {
+    testComment = comment(1, 'text', user(1, 'testUser'), [comment(2, 'text2')]);
+  });
 
   it('can get its id', () => {
-    expect(comment1.id).toEqual(id);
+    expect(testComment.id).toEqual(1);
   });
+
   it('can get its text', () => {
-    expect(comment1.text).toEqual(text);
+    expect(testComment.text).toEqual('text');
   });
+
   it('can get its author', () => {
-    expect(comment1.author).toEqual(author);
+    expect(testComment.author.id).toEqual(1);
+    expect(testComment.author.name).toEqual('testUser');
   });
+
   it('can get its comments', () => {
-    expect(comment1.commentsHandler.comments).toEqual(comments);
+    expect(testComment.commentsHandler.comments).toEqual(expect.any(Array));
+    expect(testComment.commentsHandler.comments[0].id).toEqual(2);
+    expect(testComment.commentsHandler.comments[0].text).toEqual('text2');
   });
-  text = 'new comment text';
-  comment1.setText(text);
+
   it('can set its text', () => {
-    expect(comment1.text).toEqual(text);
+    testComment.setText('text3');
+    expect(testComment.text).toEqual('text3');
   });
 });

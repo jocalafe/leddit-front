@@ -3,7 +3,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import PropTypes from 'prop-types';
 
-const LedditButton = ({ className,
+const Button = ({ className,
   buttonStyle,
   type,
   children,
@@ -13,8 +13,7 @@ const LedditButton = ({ className,
   href,
   icon,
   label,
-  onTouchTap,
-  hoverColor }) => {
+  onTouchTap }) => {
   const ButtonStyle = buttonStyle === 'raised' ? RaisedButton : FlatButton;
   return (
     <div className={className}>
@@ -26,21 +25,21 @@ const LedditButton = ({ className,
         href={href}
         icon={icon}
         label={label}
-        onTouchTap={onTouchTap}
-        hoverColor={hoverColor}>
+        onTouchTap={onTouchTap}>
         {children}
       </ButtonStyle>
     </div>
   );
 };
 
-LedditButton.propTypes = {
+Button.propTypes = {
   className: PropTypes.string,
   buttonStyle: PropTypes.string,
   type: PropTypes.string,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node]),
+    PropTypes.node,
+  ]),
   backgroundColor: PropTypes.string,
   container: PropTypes.oneOfType([
     PropTypes.string,
@@ -50,7 +49,7 @@ LedditButton.propTypes = {
   href: PropTypes.string,
   icon: PropTypes.string,
   label: PropTypes.string,
-  onTouchTap: PropTypes.func
+  onTouchTap: PropTypes.func,
 };
 
-export default LedditButton;
+export default Button;

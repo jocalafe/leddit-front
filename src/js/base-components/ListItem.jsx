@@ -1,18 +1,19 @@
 import React from 'react';
-import { ListItem } from 'material-ui/List';
+import { ListItem as MuiListItem } from 'material-ui/List';
 import PropTypes from 'prop-types';
 
-const LedditList = ({ nestedItems, children, ...rest }) => (
-  <ListItem nestedItems={nestedItems} {...rest}>
+const ListItem = ({ nestedItems, children, ...rest }) => (
+  <MuiListItem nestedItems={nestedItems} {...rest}>
     {children}
-  </ListItem>
+  </MuiListItem>
 );
 
-LedditList.propTypes = {
+ListItem.propTypes = {
   nestedItems: PropTypes.arrayOf(PropTypes.node),
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node])
+    PropTypes.node
+  ])
 };
 
-export default LedditList;
+export default ListItem;

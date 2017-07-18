@@ -1,7 +1,5 @@
-export default function user(userId, userName, userSubscriptions) {
-  const id = userId;
-  const name = userName;
-  let subscriptions = userSubscriptions || [];
+export default function user(id, name, initialSubscriptions = []) {
+  let subscriptions = initialSubscriptions;
   return {
     get id() {
       return id;

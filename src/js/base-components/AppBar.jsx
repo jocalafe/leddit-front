@@ -1,8 +1,8 @@
 import React from 'react';
-import AppBar from 'material-ui/AppBar';
+import MuiAppBar from 'material-ui/AppBar';
 import PropTypes from 'prop-types';
 
-const LedditAppBar = ({ className,
+const AppBar = ({ className,
   iconElementLeft,
   iconElementRight,
   iconClassNameLeft,
@@ -12,7 +12,7 @@ const LedditAppBar = ({ className,
   onTitleTouchTap,
   showMenuIconButton,
   title }) => (
-    <AppBar className={className}
+    <MuiAppBar className={className}
       iconElementLeft={iconElementLeft}
       iconElementRight={iconElementRight}
       iconClassNameLeft={iconClassNameLeft}
@@ -24,7 +24,7 @@ const LedditAppBar = ({ className,
       title={title} />
 );
 
-LedditAppBar.propTypes = {
+AppBar.propTypes = {
   className: PropTypes.string,
   iconElementLeft: PropTypes.node,
   iconElementRight: PropTypes.node,
@@ -37,4 +37,4 @@ LedditAppBar.propTypes = {
   title: PropTypes.string
 };
 
-export default LedditAppBar;
+export default AppBar;

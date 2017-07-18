@@ -8,19 +8,24 @@ describe('comment handler factory function', () => {
 });
 
 describe('comment handler object', () => {
-  let comments = [comment(1, 'lul'), comment(2, 'lmfao')];
-  const commentsHandler1 = commentsHandler(comments);
+  let testCommentsHandler;
+
+  beforeEach(() => {
+    testCommentsHandler = commentsHandler([comment(1, 'comment1')]);
+  });
+
   it('can get its comments', () => {
-    expect(commentsHandler1.comments).toEqual(comments);
+    expect(testCommentsHandler.comments).toEqual(expect.any(Array));
+    expect(testCommentsHandler.comments[0].id).toEqual(1);
+    expect(testCommentsHandler.comments[0].text).toEqual('comment1');
   });
-  comments = [...comments, comment(3, 'lol')];
-  commentsHandler1.addComment(comment(3, 'lol'));
+
   it('can add a comment', () => {
-    expect(commentsHandler1.comments).toEqual(comments);
+    testCommentsHandler.addComment(comment(2, 'comment2'));
+    expect(testCommentsHandler.comments.length).toEqual(2);
   });
-  comments.pop();
-  commentsHandler1.deleteComment(3);
   it('can delete a comment', () => {
-    expect(commentsHandler1.comments).toEqual(comments);
+    testCommentsHandler.deleteComment(1);
+    expect(testCommentsHandler.comments.length).toEqual(0);
   });
 });

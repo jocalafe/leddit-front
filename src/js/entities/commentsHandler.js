@@ -1,5 +1,5 @@
-export default function commentsHandler(handlerComments) {
-  let comments = handlerComments || [];
+export default function commentsHandler(initialComments) {
+  let comments = initialComments || [];
   return {
     get comments() {
       return comments;

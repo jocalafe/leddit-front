@@ -8,9 +8,15 @@ describe('post handler factory function', () => {
 });
 
 describe('post handler object', () => {
-  const posts = [post(1, 'lul'), post(2, 'lmfao')];
-  const postsHandler1 = postsHandler(posts);
+  let testPostHandler;
+
+  beforeEach(() => {
+    testPostHandler = postsHandler([post(1, 'post1')]);
+  });
+
   it('can get its posts', () => {
-    expect(postsHandler1.posts).toEqual(posts);
+    expect(testPostHandler.posts).toEqual(expect.any(Array));
+    expect(testPostHandler.posts[0].id).toEqual(1);
+    expect(testPostHandler.posts[0].title).toEqual('post1');
   });
 });
